@@ -10,12 +10,9 @@ on:
 permissions:
   contents: write
 
-env:
-  PROJECT_DIR: DoiBow-fabric-1.21.11/doibow
-
 defaults:
   run:
-    working-directory: ${{ env.PROJECT_DIR }}
+    working-directory: DoiBow-fabric-1.21.11/doibow
 
 jobs:
   build:
