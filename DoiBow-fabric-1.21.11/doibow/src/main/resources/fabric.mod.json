@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "doibow",
+	"version": "${version}",
+	"name": "DoiBow",
+	"description": "Adds the DoiBow: a railgun-style bow that fires a tight burst of arrows in a single tick. Get it with /function doibow:give.",
+	"authors": ["DoiBow"],
+	"license": "MIT",
+	"icon": "assets/doibow/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["com.doibow.DoiBowMod"]
+	},
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
