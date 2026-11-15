@@ -10,6 +10,13 @@ on:
 permissions:
   contents: write
 
+env:
+  PROJECT_DIR: DoiBow-fabric-1.21.11/doibow
+
+defaults:
+  run:
+    working-directory: ${{ env.PROJECT_DIR }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,18 +28,19 @@ jobs:
           java-version: 21
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 9.8.2
-      - run: gradle build --no-daemon
+          build-root-directory: DoiBow-fabric-1.21.11/doibow
+      - run: chmod +x ./gradlew
+      - run: ./gradlew build --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: doibow-jar
           path: |
-            build/libs/*.jar
-            !build/libs/*-sources.jar
+            DoiBow-fabric-1.21.11/doibow/build/libs/*.jar
+            !DoiBow-fabric-1.21.11/doibow/build/libs/*-sources.jar
           if-no-files-found: error
       - if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            build/libs/*.jar
-            !build/libs/*-sources.jar
+            DoiBow-fabric-1.21.11/doibow/build/libs/*.jar
+            !DoiBow-fabric-1.21.11/doibow/build/libs/*-sources.jar
